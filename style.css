@@ -1,0 +1,193 @@
+body {
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 20%;
+    height: 20vh;
+    border-radius: 10px;
+    background-color: rgb(167, 84, 84);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    background-color: rgb(255, 255, 255);
+    width: 40px;
+    height: 20px; /* Adjust width as needed */
+    border-radius: 40px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s;
+}
+
+.button::before {
+    position: absolute;
+    content: '';
+    background-color: #a7a7a7;
+    width: 18px; /* Adjust width as needed */
+    height: 18px; /* Adjust height as needed */
+    border-radius: 40px;
+    margin: 1px;
+    transition: 0.2s;
+}
+
+input:checked + .button{
+    background-color: rgb(0, 0, 0);
+}
+
+input:checked + .button::before {
+    transform: translateX(20px); /* Adjust translation distance as needed */
+}
+
+input {
+    display: none;
+}
+
+.candle {
+    position: absolute;
+    left: 37%;
+    top: 40%;
+    margin: 20px;
+    height: 30%;
+    width: 10%;
+    border: 6px solid rgb(3, 3, 3);
+    border-radius: 0;
+}
+
+.flame {
+    opacity: 0;
+    height: 30px;
+    width: 15px;
+    background: #ffad00;
+    border-radius: 10px 8px 8px /30px 30px 12px 12px;
+    box-shadow: 0 0 20px #ffad00;
+    animation: wind 10s ease-in-out infinite, size 20s ease-in-out infinite, flicker 10s ease-in-out infinite;
+    transform-origin: 50% 100%;
+    position: absolute;
+    top: -50px;
+    right: 69px;
+}
+
+.wick {
+    height: 15px;
+    width: 3px;
+    background: #a7a7a7;
+    position: absolute;
+    top: -21px;
+    right: 75px;
+}
+
+.eyeContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 12px;
+    margin-left: -40px;
+}
+
+.eyeContainer .eye {
+    float: left;
+    width: 12px;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    animation: blink 3.5s infinite linear;
+}
+
+.eyeContainer .eye:last-child {
+    float: right;
+}
+
+@keyframes blink {
+    0%, 88%, 94%, 100% {
+        height: 12px;
+        margin-top: 0;
+    }
+    91%, 97% {
+        height: 0;
+        margin-top: 6px;
+    }
+}
+
+@keyframes wind {
+    0%, 22%, 49%, 62%, 81%, 100% {
+        border-radius: 2px 14px 8px 8px/20px 20px;
+    }
+    14%, 32%, 56%, 70%, 89% {
+        border-radius: 14px 2px 8px 8px/20px 20px;
+    }
+}
+
+@keyframes size {
+    0%, 22%, 49%, 62%, 81%, 100% {
+        transform: scale(1, 0.9);
+    }
+    14%, 32%, 56%, 70%, 89% {
+        transform: scale(0.9, 0.9);
+    }
+}
+
+@keyframes flicker {
+    0%, 22%, 49%, 62%, 81%, 100% {
+        box-shadow: 0 0 20px 0 rgba(255, 202, 0, 0.7);
+    }
+    14%, 32%, 56%, 70%, 89% {
+        box-shadow: 0 0 30px 0 rgba(255, 202, 0, .8);
+    }
+}
+
+
+body.night-mode {
+    background-color: black; /* Dark background color for night mode */
+}
+
+.candle.night-mode{
+    position: absolute;
+    left: 37%;
+    top: 40%;
+    margin: 20px;
+    height: 30%;
+    width: 10%;
+    border: 6px solid rgb(255, 255, 255);
+    border-radius: 0;
+    
+}
+
+.flame.night-mode{
+    opacity: 1;
+}
+
+.eyeContainer .eye.night-mode {
+    float: left;
+    width: 12px;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    animation: closeEyes 3s infinite linear;
+}
+
+@keyframes closeEyes {
+    0%, 100% {
+        height: 100%;
+    }
+    50% {
+        height: 0;
+    }
+}
+
+
+.eyeContainer .eye:last-child.eye.night-mode{
+    float: right;
+}
+
+body.container.nightmode{
+    width: 20%;
+    height: 20vh;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
